@@ -2,7 +2,6 @@ FROM php:7.2.6-apache-stretch
 MAINTAINER BBOYSOULCN@GMAIL.COM
 ENV KODEXPLORE-VERSION=4.25
 WORKDIR /var/www/html/
-VOLUME /var/www/html/kodexplorer
 COPY kodexplorer /var/www/html/kodexplorer
 COPY kodexplorer.conf /etc/apache2/sites-available/ 
 COPY kodexplorer.conf /etc/apache2/sites-enabled/
@@ -16,6 +15,7 @@ RUN set -x \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j "$(getconf _NPROCESSORS_ONLN)" gd \
     && apt-get clean
+VOLUME [ "/var/www/html/kodexplorer" ]
 EXPOSE 80
 
 
