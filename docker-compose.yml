@@ -1,0 +1,10 @@
+version: "3.3"
+services: 
+  kodexplorer:
+    image: bboysoul/docker-kodexplorer
+    container_name: kodexplorer
+    ports:
+     - 80:80
+    restart: always
+    volumes:
+     - /root/docker/kodexplorer:/var/www/html/kodexplorer
